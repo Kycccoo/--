@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>費氏數列計算機</p>
+    <div>
+      <input id="fibInput" type="text" />
+      <input
+        id="fibButton"
+        type="button"
+        value="送出"
+        onclick="calculateFibonacci()"
+      />
+    </div>
+    <p>結果: <span id="fibResult"></span></p>
+    <script>
+      function fib(n) {
+        if (n == 0) {
+          return 0;
+        } else if (n == 1) {
+          return 1;
+        }
+
+        let fib_sequence = [0, 1];
+        while (fib_sequence.length <= n) {
+          let last_element = fib_sequence[fib_sequence.length - 1];
+          let second_last_element = fib_sequence[fib_sequence.length - 2];
+          fib_sequence.push(last_element + second_last_element);
+        }
+        return fib_sequence[fib_sequence.length - 1];
+      }
+
+      function calculateFibonacci() {
+        let inputElement = document.getElementById("fibInput");
+        let inputValue = parseInt(inputElement.value);
+        let resultElement = document.getElementById("fibResult");
+        let fibonacciResult = fib(inputValue);
+        resultElement.textContent = fibonacciResult;
+      }
+    </script>
+  </body>
+</html>
